@@ -1,15 +1,37 @@
 import XCTest
 @testable import Logger
+import TestSpy
+import Nimble
 
 final class LoggerTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(Logger().text, "Hello, World!")
+    var logger: Logger!
+    var printer: SpyPrinter!
+    
+    let testMessage = "TestMessage"
+    let testMessage2 = "Message2"
+    lazy var testMessages = [testMessage, testMessage2]
+    let testSeparator = "-"
+    let testTerminator = "\n"
+    
+    override func setUp() {
+        super.setUp()
+        printer = SpyPrinter()
+    }
+    
+    override func tearDown() {
+        printer = nil
+        logger = nil
     }
 
-    static var allTests = [
-        ("testExample", testExample),
-    ]
+    func givenALogger(isVerbose: Bool, isSilent: Bool) {
+        logger = Logger(isVerbose: isVerbose, isSilent: isSilent, printer: printer)
+    }
+    
+    func thenPrintsMessage(_ message: String, terminator: String) {
+        expect(self.printer).to(haveReceived(.print(message: message, terminator: terminator)))
+    }
+    
+    func thenDoesntPrintMessage(_ message: String, terminator: String) {
+        expect(self.printer).toNot(haveReceived(.print(message: message, terminator: terminator)))
+    }
 }
