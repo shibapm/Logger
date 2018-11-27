@@ -3,5 +3,6 @@ import XCTest
 import LoggerTests
 
 var tests = [XCTestCaseEntry]()
-tests += LoggerTests.allTests()
+tests += LoggerTests.__allTests()
+
 XCTMain(tests)
