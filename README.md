@@ -11,7 +11,7 @@ let package = Package(
     name: "danger-swift",
     ...
     dependencies: [
-      .package(url: "https://github.com/f-meloni/Logger", .branch("master")),
+      .package(url: "https://github.com/f-meloni/Logger", from: "0.1.0"),
     ],
     ...
 )
