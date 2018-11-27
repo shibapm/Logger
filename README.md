@@ -16,3 +16,30 @@ let package = Package(
     ...
 )
 ```
+
+### Use Logger
+
+Logger offers you different functions dipending on the type of log you want to use.
+
+Some examples:
+
+```swift
+let logger = Logger()
+
+// prints:
+// Message 1 Message 2
+logger.debug("Message 1", "Message 2")
+
+// prints:
+// Message 1 
+// Message 2
+logger.logInfo("Message 1", "Message 2", separator: "\n")
+
+// prints: 
+// WARNING: WarningMessage!
+logger.logWarning("WarningMessage", terminator: "!")
+
+// prints:
+// ERROR: ErrorMessage
+logger.logError("ErrorMessage")
+```
