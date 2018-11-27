@@ -17,7 +17,7 @@ let package = Package(
 )
 ```
 
-### Use Logger
+### Use Logger
 
 Logger offers you different functions dipending on the type of log you want to use.
 
