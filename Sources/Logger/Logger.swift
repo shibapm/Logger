@@ -3,6 +3,7 @@ import Foundation
 enum Colors: String {
     case `default` = "\u{001B}[0;0m"
     case red = "\u{001B}[31m"
+    case green = "\u{001B}[0;32m"
     case yellow = "\u{001B}[33m"
 }
 
@@ -36,6 +37,12 @@ public struct Logger {
     public func logWarning(_ items: Any..., separator: String = " ", terminator: String = "\n", isVerbose: Bool = false) {
         let yellowWarning = Colors.yellow.rawValue + "WARNING:"
         let message = yellowWarning + " " + items.joinedDescription(separator: separator)
+        print(message, terminator: terminator, isVerbose: isVerbose)
+    }
+    
+    public func logSuccess(_ items: Any..., separator: String = " ", terminator: String = "\n", isVerbose: Bool = false) {
+        let successSymbol = Colors.green.rawValue + "✔" + Colors.default.rawValue
+        let message = successSymbol + " " + items.joinedDescription(separator: separator)
         print(message, terminator: terminator, isVerbose: isVerbose)
     }
     
