@@ -3,4 +3,4 @@ steps:
   - script: 
       content: echo "releasing $VERSION"
   - tag
-Y  - push
+  - push
