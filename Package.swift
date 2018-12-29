@@ -14,7 +14,6 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/Quick/Nimble", from: "7.3.1"), // dev
         .package(url: "https://github.com/f-meloni/TestSpy", from: "0.3.1"), // dev
-        .package(url: "https://github.com/f-meloni/Rocket", from: "0.3.2"), // dev
     ],
     targets: [
         .target(
