@@ -40,6 +40,6 @@ extension LoggerTests {
     }
     
     private func successMessage(fromMessage message: String) -> String {
-        return Colors.green.rawValue + "✔" + Colors.default.rawValue + " " + message
+        return Colors.green.rawValue + successSymbol + Colors.default.rawValue + " " + message
     }
 }

@@ -7,6 +7,9 @@ enum Colors: String {
     case yellow = "\u{001B}[33m"
 }
 
+private let useDefaultSymbol = ProcessInfo.processInfo.environment["TERM"] == "xterm-256color" || ProcessInfo.processInfo.environment["CI"] != nil
+let successSymbol = useDefaultSymbol ? "✔" : "√"
+
 // Logger
 public struct Logger {
     // True if running in verbose mode, false otherwise
@@ -41,8 +44,8 @@ public struct Logger {
     }
     
     public func logSuccess(_ items: Any..., separator: String = " ", terminator: String = "\n", isVerbose: Bool = false) {
-        let successSymbol = Colors.green.rawValue + "✔" + Colors.default.rawValue
-        let message = successSymbol + " " + items.joinedDescription(separator: separator)
+        let successString = Colors.green.rawValue + successSymbol + Colors.default.rawValue
+        let message = successString + " " + items.joinedDescription(separator: separator)
         print(message, terminator: terminator, isVerbose: isVerbose)
     }
     
