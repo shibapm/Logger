@@ -1,6 +1,3 @@
 ---
-steps: 
-  - script: 
-      content: echo "releasing $VERSION"
-  - tag
+after:
   - push
